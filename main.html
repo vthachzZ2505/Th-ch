@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td style="color: white; background-color: blue; font-size: 30px; text-align: center;">
+                TÍNH CHỈ SỐ BIM
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 10px; padding-top: 15px;">
+                Nhập cân nặng?
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input id="weight" type="text" style="width: 93%; height: 20px;">
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 10px; padding-top: 15px;">
+                 Nhập chiều cao?
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input id="height" type="text" style="width: 93%; height: 20px;">
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 10px; padding-top: 15px;">
+                Chọn loại tuổi?
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                 <select id="phanloai" style="width: 95%; height: 28px;">
+                      <option></option>
+                      <option>Trung niên</option>
+                      <option>Trung niên, già lớn tuổi</option>
+                      <option>Già, lớn tuổi</option>
+                 </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 15px;">
+                <button type="button" onclick="tinh()">Tính BIM</button>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; padding-top: 15px; font-size: 20px;">
+                KẾT QUẢ
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; padding-top: 15px; font-size: 20px;">
+                <p id="tt" style="text-align: center; color: blue;"></p>
+                <p id="ttt" style="text-align: center; color: red;"></p>
+                <p id="tttt" style="text-align: center; color: red;"></p>
+
+            </td>
+        </tr>
+    </table>
+    <script>
+        function tinh()
+        {
+           let W = document.getElementById('weight').value.trim();
+           let H = document.getElementById('height').value.trim();
+           let pl = document.getElementById('phanloai').value;
+           let tts = document.getElementById('tt');
+           let tts1 = document.getElementById('ttt');
+            let tts2 = document.getElementById('tttt');
+           
+           if(isNaN(W)||isNaN(H)||W===""||H===" ")
+           {
+            alert("thiếu");
+            return;
+           }
+           const w=parseFloat(W) ;
+           const h=parseFloat(H)
+           
+
+            const BMI1 = w/(h*h);
+            const BMI = BMI1.toFixed(2);
+            tts.innerText=BMI;
+
+            if(BMI<18.5)
+        {
+            tts1.innerText = "Dưới chuẩn";
+            return;
+        }
+
+            if(BMI>=18.5 && BMI<25.0)
+        {
+            
+            tts1.innerText = "Bình thường";
+            return;
+        }
+
+            if(BMI>=25.0 && BMI<30.0)
+        {
+            
+            tts1.innerText = "Thừa cân";
+            return;
+        }
+
+            if(BMI>=30.0 && BMI<35.0)
+        {
+            
+            tts1.innerText = "Béo phì cấp độ 1"
+            tts2.innerText = "Khám định kỳ";
+            return;
+        }
+
+            if(BMI>=35.0 && BMI<40.0)
+        {
+            
+            tts1.innerText = "Béo phì cấp độ 2"
+            tts2.innerText= "Tập thể dục thường xuyên";
+            return;
+        }
+
+            if(BMI>=40.0)
+        {
+            
+            tts1.innerText = "Béo phì cấp độ 3"
+            tts2.innerText = "Hạn chế ăn mỡ động vật";
+            return;
+        }
+        }
+    </script>
+</body>
+</html>
